@@ -1,0 +1,10 @@
+{
+  "mode": "本地更新",
+  "baudrate": "1500000",
+  "comPort": "/dev/cu.usbserial-1420",
+  "token": "dummy",
+  "device": "dummy",
+  "engine": "dummy",
+  "encode": "dummy",
+  "tokenList": []
+}

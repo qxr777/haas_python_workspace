@@ -1,0 +1,9 @@
+{
+    "haasStudio.name": "humiture",
+    "haasStudio.appType": "python",
+    "haasStudio.solutionName": "helloworld",
+    "haasStudio.projectDir": "/Users/qixin/haas_python_workspace/humiture",
+    "haasStudio.pythonAdvanced": "disable",
+    "haasStudio.comPort": "/dev/cu.usbserial-1420",
+    "haasStudio.hardware.baudrate": 1500000
+}

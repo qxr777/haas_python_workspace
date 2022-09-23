@@ -1,0 +1,10 @@
+{
+    "haasStudio.name": "hello_world",
+    "haasStudio.hardware.board": "haaseduk1",
+    "haasStudio.appType": "python",
+    "haasStudio.solutionName": "helloworld",
+    "haasStudio.projectDir": "/Users/qixin/haas_workspace/hello_world",
+    "haasStudio.pythonAdvanced": "disable",
+    "haasStudio.comPort": "/dev/cu.usbserial-1420",
+    "haasStudio.hardware.baudrate": 1500000
+}

@@ -1,0 +1,8 @@
+{
+    "haasStudio.name": "audio_humiture",
+    "haasStudio.appType": "python",
+    "haasStudio.projectDir": "/Users/qixin/haas_python_workspace/audio_humiture",
+    "haasStudio.comPort": "/dev/cu.usbserial-1420",
+    "haasStudio.hardware.baudrate": 1500000,
+    "haasStudio.pythonAdvanced": "disable"
+}

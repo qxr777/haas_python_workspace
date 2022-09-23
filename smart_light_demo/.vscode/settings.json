@@ -1,0 +1,9 @@
+{
+    "haasStudio.name": "smart_light_demo",
+    "haasStudio.hardware.board": "haaseduk1",
+    "haasStudio.appType": "python",
+    "haasStudio.projectDir": "/Users/qixin/haas_python_workspace/smart_light_demo",
+    "haasStudio.comPort": "/dev/cu.usbserial-1420",
+    "haasStudio.hardware.baudrate": 1500000,
+    "haasStudio.pythonAdvanced": "disable"
+}
