@@ -9,10 +9,10 @@ from aliyunIoT import Device
 import netmgr as nm
 import utime
 import ujson
-# from speech_utils import (
-#     Speaker,
-#     AUDIO_HEADER
-# )
+from speech_utils import (
+    Speaker,
+    AUDIO_HEADER
+)
 import time
 from cht8305 import CHT8305
 from driver import I2C
@@ -23,8 +23,8 @@ import framebuf            # framebuf基类，用于设置字体库
 
 # 语音播放相关的音频资源文件定义
 resDir = "/data/pyamp/resource/"
-# tonepathConnected = AUDIO_HEADER + resDir + "connected.wav"
-# tonepathPowerOn = AUDIO_HEADER + resDir + "poweron.wav"
+tonepathConnected = AUDIO_HEADER + resDir + "connected.wav"
+tonepathPowerOn = AUDIO_HEADER + resDir + "poweron.wav"
 
 # 三元组信息
 productKey = "hoiklCoxoIa"
@@ -76,25 +76,25 @@ def post_data_to_cloud(device, temphumidity):
     device.postProps(upload_data)
 
 def play_display_temperature_humidity(cht8305Dev):
-    # play_data = {"format":0, "speechs":[]}
+    play_data = {"format":0, "speechs":[]}
     temphumidity = cht8305Dev.getTempHumidity()
     print("当前温度:", temphumidity[0], "当前湿度:", temphumidity[1])
 
     if (temphumidity[0] < 0):
         temperature = "{$%.2f}" % -temphumidity[0]
         humidity = "{$%.2f}" % temphumidity[1]
-        # play_data["speechs"] = ["temperature", "negative", temperature, "centigrade", "humidity", humidity]
+        play_data["speechs"] = ["temperature", "negative", temperature, "centigrade", "humidity", humidity]
     else:
         temperature = "{$%.2f}" % temphumidity[0]
         humidity = "{$%.2f}" % temphumidity[1]
-        # play_data["speechs"] = ["temperature", temperature, "centigrade", "humidity", humidity]
+        play_data["speechs"] = ["temperature", temperature, "centigrade", "humidity", humidity]
 
     temp_str = "T:%.2f" % temphumidity[0]
     humi_str = "H:%.2f%%" % temphumidity[1]
     oledShowText(temp_str, 3, 1, 1, True, 12)
     oledShowText(humi_str, 3, 16, 1, False, 12)
 
-    # speaker.play_voice(play_data,resDir)
+    speaker.play_voice(play_data,resDir)
     return temphumidity
 
 # OLED初始化
@@ -133,8 +133,8 @@ def oledShowText(text, x, y, color, clear, sz):
     oled.show()
 
 # 连接物联网平台
-def do_connect_lk(productKey, deviceName, deviceSecret):
-# def do_connect_lk(productKey, deviceName, deviceSecret,speaker):
+# def do_connect_lk(productKey, deviceName, deviceSecret):
+def do_connect_lk(productKey, deviceName, deviceSecret,speaker):
     global device, iot_connected, on_request, on_play, oled
     key_info = {
         'region' : 'cn-shanghai' ,      #实例的区域
@@ -157,7 +157,7 @@ def do_connect_lk(productKey, deviceName, deviceSecret):
     while True:
         if iot_connected:
             print("物联网平台连接成功")
-            # speaker.play(tonepathConnected)
+            speaker.play(tonepathConnected)
             break
         else:
             print("sleep for 1 s")
@@ -185,8 +185,8 @@ def do_connect_lk(productKey, deviceName, deviceSecret):
 
 if __name__ == '__main__':
     print("local speaker demo version")
-    # speaker = Speaker(resDir)                                       # 初始化speaker
-    # speaker.play(tonepathPowerOn)                                   # 播放开机启动提示音
+    speaker = Speaker(resDir)                                       # 初始化speaker
+    speaker.play(tonepathPowerOn)                                   # 播放开机启动提示音
     get_wifi_status()                                               # 确保wifi连接成功
-    do_connect_lk(productKey, deviceName, deviceSecret)     # 启动千里传音服务
-    # do_connect_lk(productKey, deviceName, deviceSecret,speaker)     # 启动千里传音服务
+    # do_connect_lk(productKey, deviceName, deviceSecret)     # 启动千里传音服务
+    do_connect_lk(productKey, deviceName, deviceSecret,speaker)     # 启动千里传音服务
